@@ -16,7 +16,6 @@ async function fetchConnectionToken() {
 	// Your backend should call /v1/terminal/connection_tokens and return the JSON response from Stripe
 	const response = await fetch('http://localhost/connection_token', { method: "POST" });
 	const data = await response.json();
-	console.log(data);
 	return data.secret;
 }
 
@@ -33,10 +32,9 @@ async function discoverReaders() {
 	const config = { simulated: false, location: "tml_EeUA1QHyxVHkQt" }
 	const discoverResult = await terminal.discoverReaders(config);
 	if (discoverResult.error) {
-		console.log('Failed to discover: ', discoverResult.error);
+		showToast('Failed to discover: ', discoverResult.error);
 	} else if (discoverResult.discoveredReaders.length === 0) {
 		showToast('No available readers.');
-		console.log('No available readers.');
 	} else {
 		// You should show the list of discoveredReaders to the
 		// cashier here and let them select which to connect to (see below).
@@ -50,9 +48,9 @@ async function connectReader(discoverResult) {
 
 	const connectResult = await terminal.connectReader(selectedReader);
 	if (connectResult.error) {
-		console.log('Failed to connect:', connectResult.error);
+		showToast('Failed to connect:', connectResult.error);
 	} else {
-		console.log('Connected to reader:', connectResult.reader.label);
+		showToast('Connected to reader:', connectResult.reader.label);
 	}
 }
 
@@ -65,14 +63,13 @@ async function collectPayment() {
 	}).then((response) => {
 		return response.json();
 	}).then((responseJson) => {
-		console.log(clientSecret);
 		const result = terminal.collectPaymentMethod(responseJson.client_secret);
 		if (result.error) {
 			// Placeholder for handling result.error
-			console.log("err: " + result.error);
+			showToast("Error: " + result.error);
 		} else {
 			// Placeholder for processing result.paymentIntent
-			console.log("succ: " + result.paymentIntent)
+			showToast("Payment Processed Successfully")
 		}
 	});
 }
@@ -81,7 +78,6 @@ function addProduct(name, value) {
 	const i = cart.line_items.findIndex(e => e.description === name);
 	var qty; 
 	if (i > -1) {
-		console.log("exists")
 		cart.line_items[i].quantity += 1;
 		qty = cart.line_items[i].quantity;
 		cart.line_items[i].amount = value * cart.line_items[i].quantity;
