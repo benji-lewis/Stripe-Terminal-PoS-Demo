@@ -1,0 +1,18 @@
+{
+  "name": "stripe-terminal-benji",
+  "version": "1.0.0",
+  "description": "Testing for the Stripe Terminal API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Lewis",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "stripe": "^12.7.0"
+  }
+}

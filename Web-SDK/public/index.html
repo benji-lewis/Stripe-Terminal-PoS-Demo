@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stripe Terminal PoS Demo</title>
+	<link rel="stylesheet" href="lib/css/index.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+</head>
+<body class="parent">
+	<div class="logo">
+		<a style="height: 100%;" href="https://benjilewis.dev"><img src="https://benjilewis.dev/lib/img/logo/white.svg" alt="benjilewis.dev"></a>
+	</div>
+	<div class="header">
+		<h1>Stripe Terminal PoS Demo</h1>
+	</div>
+	<div class="auth">
+		<input id="discoverButton" type="button" onclick="discoverReaders()" value="Discover Readers">
+	</div>
+	<div class="main">
+		<input type="button" onclick="addProduct('donut', 1000)" value="Donut">
+	</div>
+	<div id="bill" class="greyBg">
+		<table style="height: 100%; width: 100%;">
+			<thead>
+				<tr>
+					<th>Qty</th>
+					<th>Item</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody id="billBody" style="vertical-align: top;">
+			</tbody>
+			<tfoot style="vertical-align: bottom; font-weight: bold;">
+				<tr>
+					<td></td>
+					<td>Subtotal</td>
+					<td>£<span id="billPrice">0.00</span></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div id="amountView">
+		<label for="amount">Additional Amount</label>
+		<input id="chargeAmount" type="text" name="amount" id="amount" placeholder="Enter Amount">
+		<input id="chargeButton" type="button" onclick="collectPayment()" value="Charge">
+	</div>
+	<div class="footer">
+		<p>Made with ❤ by <a href="https://benjilewis.dev">Benji Lewis</a></p>
+		<p>Looking for consultancy? Contact <a href="https://visimedia.co.uk">VisiMedia</a></p>
+	</div>
+	<div id="toast" class="toast">Error.</div>
+	<script src="https://js.stripe.com/terminal/v1/"></script>
+	<script src="lib/js/stripe.js"></script>
+</body>
+</html>
