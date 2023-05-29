@@ -25,7 +25,7 @@
     <a href="https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://stripedemo.benjilewis.dev/">View Demo</a>
     ·
     <a href="https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/issues">Report Bug</a>
     ·
@@ -66,9 +66,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This project is a demonstration of the Stripe Terminal JS SDK. It is a simple PoS system that allows you to add items to a cart, and then process the payment using the Stripe Terminal JS SDK. It is built using Node.js and Express.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -76,14 +76,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Node][Node.js]][Node-url]
+* [![Express][Express]][Express-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -92,12 +86,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This project requires two components to work correctly. A **local** server, on the same network as the BBPOS WisePOS E and a public server with access to make POST requests to the local server. 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
@@ -105,18 +97,19 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [https://stripe.com](https://stripe.com)
+2. Optionally, purchase a BBPOS WisePOS E from [https://dashboard.stripe.com/terminal/shop/](https://dashboard.stripe.com/terminal/shop/thsku_J2Qtkrh7X6iusM)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/benjisoft/Stripe-Terminal-PoS-Demo.git
    ```
 3. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Copy .env.example to .env and fill in your Stripe secret key
+   ```env
+   STRIPE_SECRET = 'ENTER YOUR SECRET KEY';
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -126,7 +119,11 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+You can easily add additional buttons to the product matrix by adding the following HTML within the `main` div in `index.html`:
+
+```html
+<input type="button" onclick="addProduct('PRODUCT NAME', COST IN PENNIES)" value="DISPLAY NAME">
+```
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -137,12 +134,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Support for multiple BBPOS WisePOS E devices
+- [ ] Storage of multiple transactions
+	- [ ] Pre-authorisation of transactions
+- [ ] Dynamic product matrix
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -169,7 +166,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GNU General Public License v3.0. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -178,9 +175,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Benji Lewis - [@benjisoft](https://twitter.com/benjisoft) - benji@benjisoft.org.uk
+For paid consulting, contact [VisiMedia](https://visimedia.co.uk)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/benjisoft/Stripe-Terminal-PoS-Demo](https://github.com/benjisoft/Stripe-Terminal-PoS-Demo)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -189,9 +187,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,32 +195,20 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/benjisoft/Stripe-Terminal-PoS-Demo.svg?style=for-the-badge
+[contributors-url]: https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/benjisoft/Stripe-Terminal-PoS-Demo.svg?style=for-the-badge
+[forks-url]: https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/network/members
+[stars-shield]: https://img.shields.io/github/stars/benjisoft/Stripe-Terminal-PoS-Demo.svg?style=for-the-badge
+[stars-url]: https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/stargazers
+[issues-shield]: https://img.shields.io/github/issues/benjisoft/Stripe-Terminal-PoS-Demo.svg?style=for-the-badge
+[issues-url]: https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/issues
+[license-shield]: https://img.shields.io/github/license/benjisoft/Stripe-Terminal-PoS-Demo.svg?style=for-the-badge
+[license-url]: https://github.com/benjisoft/Stripe-Terminal-PoS-Demo/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/benji-lewis
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[Node.js]: https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=node.js&logoColor=green
+[Node-url]: https://nodejs.org/
+[Express]: https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
